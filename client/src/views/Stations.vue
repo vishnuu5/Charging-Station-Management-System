@@ -1,8 +1,16 @@
 <template>
-  <div class="space-y-6">
-    <div class="flex justify-between items-center">
-      <h1 class="text-3xl font-bold text-gray-900">Charging Stations</h1>
-      <router-link to="/stations/create" class="btn btn-primary">
+  <div class="space-y-6 px-4 md:px-0">
+    <!-- Header -->
+    <div
+      class="flex flex-col md:flex-row md:justify-between md:items-center gap-2"
+    >
+      <h1 class="text-2xl md:text-3xl font-bold text-gray-900">
+        Charging Stations
+      </h1>
+      <router-link
+        to="/stations/create"
+        class="btn btn-primary self-start md:self-auto"
+      >
         Add New Station
       </router-link>
     </div>
@@ -10,23 +18,25 @@
     <!-- Filters -->
     <div class="card">
       <h2 class="text-lg font-medium mb-4">Filters</h2>
-      <div class="grid grid-cols-1 md:grid-cols-4 gap-4">
+      <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-4">
+        <!-- Status -->
         <div>
           <label class="block text-sm font-medium text-gray-700 mb-1"
             >Status</label
           >
-          <select v-model="filters.status" class="input">
+          <select v-model="filters.status" class="input w-full">
             <option value="">All Status</option>
             <option value="Active">Active</option>
             <option value="Inactive">Inactive</option>
             <option value="Maintenance">Maintenance</option>
           </select>
         </div>
+        <!-- Connector Type -->
         <div>
           <label class="block text-sm font-medium text-gray-700 mb-1"
             >Connector Type</label
           >
-          <select v-model="filters.connectorType" class="input">
+          <select v-model="filters.connectorType" class="input w-full">
             <option value="">All Types</option>
             <option value="Type 1">Type 1</option>
             <option value="Type 2">Type 2</option>
@@ -35,6 +45,7 @@
             <option value="Tesla Supercharger">Tesla Supercharger</option>
           </select>
         </div>
+        <!-- Min Power -->
         <div>
           <label class="block text-sm font-medium text-gray-700 mb-1"
             >Min Power (kW)</label
@@ -42,10 +53,11 @@
           <input
             v-model="filters.minPower"
             type="number"
-            class="input"
+            class="input w-full"
             placeholder="0"
           />
         </div>
+        <!-- Max Power -->
         <div>
           <label class="block text-sm font-medium text-gray-700 mb-1"
             >Max Power (kW)</label
@@ -53,12 +65,13 @@
           <input
             v-model="filters.maxPower"
             type="number"
-            class="input"
+            class="input w-full"
             placeholder="350"
           />
         </div>
       </div>
-      <div class="mt-4 flex space-x-2">
+      <!-- Filter Buttons -->
+      <div class="mt-4 flex flex-wrap gap-2">
         <button @click="applyFilters" class="btn btn-primary">
           Apply Filters
         </button>
@@ -81,11 +94,15 @@
         <div
           v-for="station in stations"
           :key="station._id"
-          class="border rounded-lg p-6 hover:shadow-md transition-shadow"
+          class="border rounded-lg p-4 sm:p-6 hover:shadow-md transition-shadow"
         >
-          <div class="flex justify-between items-start">
+          <div
+            class="flex flex-col sm:flex-row justify-between sm:items-start gap-3"
+          >
             <div class="flex-1">
-              <h3 class="text-lg font-semibold">{{ station.name }}</h3>
+              <h3 class="text-base sm:text-lg font-semibold">
+                {{ station.name }}
+              </h3>
               <p class="text-gray-600 mt-1">
                 {{ station.description || "No description" }}
               </p>
@@ -97,7 +114,7 @@
                     `${station.location.latitude}, ${station.location.longitude}`
                   }}
                 </p>
-                <div class="flex items-center space-x-4">
+                <div class="flex flex-wrap items-center gap-2 mt-2">
                   <span
                     class="text-xs px-2 py-1 rounded-full"
                     :class="getStatusClass(station.status)"
@@ -110,13 +127,13 @@
                   <span class="text-sm text-gray-600"
                     >🔌 {{ station.connectorType }}</span
                   >
-                  <span v-if="station.price" class="text-sm text-gray-600"
-                    >💰 ${{ station.price }}/kWh</span
-                  >
+                  <span v-if="station.price" class="text-sm text-gray-600">
+                    💰 ${{ station.price }}/kWh
+                  </span>
                 </div>
               </div>
             </div>
-            <div class="flex space-x-2 ml-4">
+            <div class="flex gap-2 self-start">
               <router-link
                 :to="`/stations/${station._id}/edit`"
                 class="btn btn-secondary text-sm"
@@ -136,7 +153,7 @@
 
       <!-- Pagination -->
       <div v-if="pagination.pages > 1" class="mt-6 flex justify-center">
-        <div class="flex space-x-2">
+        <div class="flex flex-wrap gap-2">
           <button
             v-for="page in pagination.pages"
             :key="page"
