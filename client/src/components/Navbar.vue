@@ -11,7 +11,7 @@
           <div class="hidden md:flex space-x-4">
             <router-link to="/" class="nav-link">Dashboard</router-link>
             <router-link to="/stations" class="nav-link">
-              {{ isAdmin ? 'All Stations' : 'My Stations' }}
+              {{ isAdmin ? "All Stations" : "My Stations" }}
             </router-link>
             <router-link to="/map" class="nav-link">Map View</router-link>
             <router-link v-if="isAdmin" to="/admin/users" class="nav-link">
@@ -22,12 +22,15 @@
             </router-link>
           </div>
         </div>
-        
+
         <!-- Desktop User Info and Logout -->
         <div class="hidden md:flex items-center space-x-4">
           <span class="text-gray-600">
             Welcome, {{ user?.name }}
-            <span v-if="isAdmin" class="ml-2 px-2 py-1 bg-blue-100 text-blue-800 text-xs rounded-full">
+            <span
+              v-if="isAdmin"
+              class="ml-2 px-2 py-1 bg-blue-100 text-blue-800 text-xs rounded-full"
+            >
               Admin
             </span>
           </span>
@@ -43,9 +46,26 @@
             class="text-gray-600 hover:text-gray-900 focus:outline-none focus:text-gray-900"
             aria-label="Toggle menu"
           >
-            <svg class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-              <path v-if="!mobileMenuOpen" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
-              <path v-else stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+            <svg
+              class="h-6 w-6"
+              fill="none"
+              viewBox="0 0 24 24"
+              stroke="currentColor"
+            >
+              <path
+                v-if="!mobileMenuOpen"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                stroke-width="2"
+                d="M4 6h16M4 12h16M4 18h16"
+              />
+              <path
+                v-else
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                stroke-width="2"
+                d="M6 18L18 6M6 6l12 12"
+              />
             </svg>
           </button>
         </div>
@@ -57,76 +77,139 @@
           <!-- User Info -->
           <div class="px-3 py-2 text-gray-600 border-b border-gray-200 mb-2">
             <div class="font-medium">{{ user?.name }}</div>
-            <div v-if="isAdmin" class="text-xs text-blue-600 mt-1">Administrator</div>
+            <div v-if="isAdmin" class="text-xs text-blue-600 mt-1">
+              Administrator
+            </div>
           </div>
 
           <!-- Navigation Links -->
-          <router-link 
-            to="/" 
-            class="mobile-nav-link"
-            @click="closeMobileMenu"
-          >
-            <svg class="h-5 w-5 mr-3" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 7v10a2 2 0 002 2h14a2 2 0 002-2V9a2 2 0 00-2-2H5a2 2 0 00-2-2z" />
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 5a2 2 0 012-2h4a2 2 0 012 2v6H8V5z" />
+          <router-link to="/" class="mobile-nav-link" @click="closeMobileMenu">
+            <svg
+              class="h-5 w-5 mr-3"
+              fill="none"
+              viewBox="0 0 24 24"
+              stroke="currentColor"
+            >
+              <path
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                stroke-width="2"
+                d="M3 7v10a2 2 0 002 2h14a2 2 0 002-2V9a2 2 0 00-2-2H5a2 2 0 00-2-2z"
+              />
+              <path
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                stroke-width="2"
+                d="M8 5a2 2 0 012-2h4a2 2 0 012 2v6H8V5z"
+              />
             </svg>
             Dashboard
           </router-link>
 
-          <router-link 
-            to="/stations" 
+          <router-link
+            to="/stations"
             class="mobile-nav-link"
             @click="closeMobileMenu"
           >
-            <svg class="h-5 w-5 mr-3" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z" />
+            <svg
+              class="h-5 w-5 mr-3"
+              fill="none"
+              viewBox="0 0 24 24"
+              stroke="currentColor"
+            >
+              <path
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                stroke-width="2"
+                d="M13 10V3L4 14h7v7l9-11h-7z"
+              />
             </svg>
-            {{ isAdmin ? 'All Stations' : 'My Stations' }}
+            {{ isAdmin ? "All Stations" : "My Stations" }}
           </router-link>
 
-          <router-link 
-            to="/map" 
+          <router-link
+            to="/map"
             class="mobile-nav-link"
             @click="closeMobileMenu"
           >
-            <svg class="h-5 w-5 mr-3" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 20l-5.447-2.724A1 1 0 013 16.382V5.618a1 1 0 011.447-.894L9 7m0 13l6-3m-6 3V7m6 10l4.553 2.276A1 1 0 0021 18.382V7.618a1 1 0 00-.553-.894L15 4m0 13V4m0 0L9 7" />
+            <svg
+              class="h-5 w-5 mr-3"
+              fill="none"
+              viewBox="0 0 24 24"
+              stroke="currentColor"
+            >
+              <path
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                stroke-width="2"
+                d="M9 20l-5.447-2.724A1 1 0 013 16.382V5.618a1 1 0 011.447-.894L9 7m0 13l6-3m-6 3V7m6 10l4.553 2.276A1 1 0 0021 18.382V7.618a1 1 0 00-.553-.894L15 4m0 13V4m0 0L9 7"
+              />
             </svg>
             Map View
           </router-link>
 
           <!-- Admin Only Links -->
           <template v-if="isAdmin">
-            <router-link 
-              to="/admin/users" 
+            <router-link
+              to="/admin/users"
               class="mobile-nav-link"
               @click="closeMobileMenu"
             >
-              <svg class="h-5 w-5 mr-3" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4.354a4 4 0 110 5.292M15 21H3v-1a6 6 0 0112 0v1zm0 0h6v-1a6 6 0 00-9-5.197m13.5-9a2.5 2.5 0 11-5 0 2.5 2.5 0 015 0z" />
+              <svg
+                class="h-5 w-5 mr-3"
+                fill="none"
+                viewBox="0 0 24 24"
+                stroke="currentColor"
+              >
+                <path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  stroke-width="2"
+                  d="M12 4.354a4 4 0 110 5.292M15 21H3v-1a6 6 0 0112 0v1zm0 0h6v-1a6 6 0 00-9-5.197m13.5-9a2.5 2.5 0 11-5 0 2.5 2.5 0 015 0z"
+                />
               </svg>
               User Management
             </router-link>
 
-            <router-link 
-              to="/admin/analytics" 
+            <router-link
+              to="/admin/analytics"
               class="mobile-nav-link"
               @click="closeMobileMenu"
             >
-              <svg class="h-5 w-5 mr-3" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z" />
+              <svg
+                class="h-5 w-5 mr-3"
+                fill="none"
+                viewBox="0 0 24 24"
+                stroke="currentColor"
+              >
+                <path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  stroke-width="2"
+                  d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z"
+                />
               </svg>
               Analytics
             </router-link>
           </template>
 
           <!-- Logout Button -->
-          <button 
-            @click="handleLogout" 
+          <button
+            @click="handleLogout"
             class="mobile-nav-link w-full text-left text-red-600 hover:text-red-800 hover:bg-red-50"
           >
-            <svg class="h-5 w-5 mr-3" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 16l4-4m0 0l-4-4m4 4H7m6 4v1a3 3 0 01-3 3H6a3 3 0 01-3-3V7a3 3 0 013-3h4a3 3 0 013 3v1" />
+            <svg
+              class="h-5 w-5 mr-3"
+              fill="none"
+              viewBox="0 0 24 24"
+              stroke="currentColor"
+            >
+              <path
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                stroke-width="2"
+                d="M17 16l4-4m0 0l-4-4m4 4H7m6 4v1a3 3 0 01-3 3H6a3 3 0 01-3-3V7a3 3 0 013-3h4a3 3 0 013 3v1"
+              />
             </svg>
             Logout
           </button>
@@ -137,47 +220,47 @@
 </template>
 
 <script>
-import { ref, computed } from 'vue'
-import { useRouter } from 'vue-router'
-import { useAuthStore } from '../stores/auth'
-import { useToast } from '../composables/useToast'
+import { ref, computed } from "vue";
+import { useRouter } from "vue-router";
+import { useAuthStore } from "../stores/auth";
+import { useToast } from "../composables/useToast";
 
 export default {
-  name: 'Navbar',
+  name: "Navbar",
   setup() {
-    const router = useRouter()
-    const authStore = useAuthStore()
-    const { success } = useToast()
-    
-    const user = computed(() => authStore.user)
-    const isAdmin = computed(() => authStore.user?.role === 'admin')
-    const mobileMenuOpen = ref(false)
-    
+    const router = useRouter();
+    const authStore = useAuthStore();
+    const { success } = useToast();
+
+    const user = computed(() => authStore.user);
+    const isAdmin = computed(() => authStore.user?.role === "admin");
+    const mobileMenuOpen = ref(false);
+
     const toggleMobileMenu = () => {
-      mobileMenuOpen.value = !mobileMenuOpen.value
-    }
-    
+      mobileMenuOpen.value = !mobileMenuOpen.value;
+    };
+
     const closeMobileMenu = () => {
-      mobileMenuOpen.value = false
-    }
-    
+      mobileMenuOpen.value = false;
+    };
+
     const handleLogout = () => {
-      authStore.logout()
-      success('Logged out successfully')
-      closeMobileMenu()
-      router.push('/login')
-    }
-    
+      authStore.logout();
+      success("Logged out successfully");
+      closeMobileMenu();
+      router.push("/login");
+    };
+
     return {
       user,
       isAdmin,
       mobileMenuOpen,
       toggleMobileMenu,
       closeMobileMenu,
-      handleLogout
-    }
-  }
-}
+      handleLogout,
+    };
+  },
+};
 </script>
 
 <style scoped>
