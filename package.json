@@ -1,0 +1,25 @@
+{
+  "name": "charging-station-management",
+  "version": "1.0.0",
+  "description": "Full-stack charging station management system",
+  "main": "index.js",
+  "scripts": {
+    "dev": "concurrently \"npm run server\" \"npm run client\"",
+    "server": "cd server && npm run dev",
+    "client": "cd client && npm run dev",
+    "install-all": "npm install && cd server && npm install && cd ../client && npm install"
+  },
+  "keywords": [
+    "charging-station",
+    "nodejs",
+    "express",
+    "vue",
+    "mongodb"
+  ],
+  "author": "vishnu",
+  "license": "ISC",
+  "type": "commonjs",
+  "devDependencies": {
+    "concurrently": "^9.1.2"
+  }
+}
