@@ -3,13 +3,15 @@
   "version": "1.0.0",
   "description": "Full-stack charging station management system",
   "main": "index.js",
+  "type": "commonjs",
   "scripts": {
     "dev": "concurrently \"npm run server\" \"npm run client\"",
     "server": "cd server && npm run dev",
     "client": "cd client && npm run dev",
     "install-all": "npm install && cd server && npm install && cd ../client && npm install",
-    "build": "cd client && npm install && npm run build",
-    "start": "cd server && npm start"
+    "build": "npm run install-all && cd client && npm run build",
+    "start": "cd server && npm start",
+    "postinstall": "npm run install-all"
   },
   "keywords": [
     "charging-station",
@@ -20,7 +22,6 @@
   ],
   "author": "vishnu",
   "license": "ISC",
-  "type": "commonjs",
   "devDependencies": {
     "concurrently": "^9.1.2"
   }
