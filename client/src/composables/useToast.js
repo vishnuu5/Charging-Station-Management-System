@@ -1,5 +1,3 @@
-"use client";
-
 import { ref } from "vue";
 
 const toasts = ref([]);
